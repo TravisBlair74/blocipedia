@@ -32,6 +32,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem "pundit"
 gem 'jquery-rails'
+gem 'stripe'
+gem 'figaro', '1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
