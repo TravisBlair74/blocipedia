@@ -1,6 +1,6 @@
  <h1>Wikis</h1>
  <% @wikis.each do |wiki| %>
-   <% if wiki.private == false || (wiki.private == true && (current_user.admin? || current_user.premium?)) %>
+   <% if !wiki.private? || (wiki.private? && (current_user.premium? || current_user.admin?)) %>
    <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
