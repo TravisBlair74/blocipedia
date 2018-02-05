@@ -34,6 +34,7 @@ gem "pundit"
 gem 'jquery-rails'
 gem 'stripe'
 gem 'figaro', '1.0'
+gem 'redcarpet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
