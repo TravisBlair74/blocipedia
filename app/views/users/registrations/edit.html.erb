@@ -36,8 +36,16 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Cancel </h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+<% if current_user.member? %>
+  <h3>Upgrade Account</h3>
+  <%= link_to 'Upgrade', new_charge_path, class: 'btn btn-success' %>
+<% else %>
+  <h3>Downgrade Account</h3>
+  <%= link_to 'Downgrade', downgrade_path, method: :put, class: 'btn btn-warning' %>
+<% end %>

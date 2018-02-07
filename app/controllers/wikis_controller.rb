@@ -1,12 +1,6 @@
 class WikisController < ApplicationController
   before_action :authorize_user, only: [:destroy]
 
-  def downgrade_wikis
-    @wikis.each do |a|
-      a.private = false if a.user_id == current_user[:id]
-    end
-  end
-
   def index
     @wikis = Wiki.all
   end

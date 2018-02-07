@@ -7,18 +7,29 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: Amount.default,
+      amount: 15_00,
       description: "BigMoney Membership - #{current_user.email}",
       currency: 'usd'
     )
 
     flash[:notice] = "Thanks for the payment, #{current_user.email}!"
-    current_user.role = 'premium'
-    redirect_to user_path(current_user)
+    current_user.premium!
+    redirect_to wikis_path
 
     rescue Stripe::CardError => e
       flash[:alert] = e.message
-      redirect_to new_charge_path
+      redirect_to wikis_path
+  end
+
+  def downgrade
+    current_user.member!
+
+    current_user.wikis.each do |wiki|
+      wiki.update(private: false)
+    end
+
+    flash[:notice] = "Your account has been downgraded.  All private Wikis are now public!"
+    redirect_to wikis_path
   end
 
   def new

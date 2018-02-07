@@ -8,5 +8,7 @@ Rails.application.routes.draw do
    root 'wikis#index', as: :authenticated_root
   end
 
+  put '/downgrade', to: 'charges#downgrade'
+
   root 'welcome#index'
 end
