@@ -1,14 +1,13 @@
 class WikiPolicy < ApplicationPolicy
-  def show
-    if user.premium || user.admin
-      if record.private!
-    else
-      if
-    end
+  attr_reader :user, :wiki
+
+  def initialize(user, wiki)
+    @user = user
+    @wiki = wiki
   end
 
-  private
-  def wiki
-    record
+  def destroy?
+    user.admin?
   end
+
 end

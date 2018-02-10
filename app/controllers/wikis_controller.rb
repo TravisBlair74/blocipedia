@@ -1,5 +1,4 @@
 class WikisController < ApplicationController
-  before_action :authorize_user, only: [:destroy]
 
   def index
     @wikis = Wiki.all
@@ -50,6 +49,7 @@ class WikisController < ApplicationController
   end
 
   def destroy
+    authorize Wiki
     @wiki = Wiki.find(params[:id])
 
     if @wiki.destroy
@@ -61,14 +61,4 @@ class WikisController < ApplicationController
     end
   end
 
-  private
-
-  def authorize_user
-    wiki = Wiki.find(params[:id])
-
-    unless current_user == wiki.user || current_user.admin?
-      flash[:alert] = "You can only delete your own wikis."
-      redirect_to [wiki]
-    end
-  end
 end
