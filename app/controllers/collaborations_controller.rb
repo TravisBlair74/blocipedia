@@ -4,10 +4,9 @@ class CollaborationsController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.find(params[:id])
     @collaboration = Collaboration.new
-    @collaboration.user_id = current_user[:id]
-    @collaboration.wiki_id = @wiki[:id]
+    @collaboration.user_id = params[:collaboration][:user_id]
+    @collaboration.wiki_id = 23
 
     if @collaboration.save
       flash[:notice] = "Collaboration was saved."

@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :wikis
   has_many :wikis, through: :collaborations
+  has_many :collaborations
 
   enum role: [:member, :premium, :admin]
   before_save { self.role ||= :member }
