@@ -2,13 +2,10 @@
 <div class="row">
   <div class="col-md-8">
     <%= form_for @collaboration do |f| %>
+      <%= f.hidden_field :wiki_id, value: @wiki.id %>
       <div class="form-group">
         <%= f.label "User ID" %>
         <%= f.text_field :user_id, class: 'form-control', placeholder: "Enter Collaborator ID" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "Wiki ID" %>
-        <%= f.text_field :wiki_id, class: 'form-control', placeholder: "Enter Wiki ID" %>
       </div>
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>

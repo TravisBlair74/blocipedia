@@ -5,5 +5,6 @@ class CreateCollaborations < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.timestamps
     end
+    add_index :collaborations, [:wiki_id, :user_id]
   end
 end
