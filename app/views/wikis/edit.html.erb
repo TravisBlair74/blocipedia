@@ -23,11 +23,12 @@
       </div>
     <% end %>
     <%= link_to "Add Collaborator", new_collaboration_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
+    <div>
+      <h3>Existing Collaborations:</h3>
+    </div>
     <% @wiki.collaborations.each do |collaboration| %>
       <div>
         <%= collaboration.user.email %>
-      </div>
-      <div>
         <%= link_to "Delete Collaboration", collaboration, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this collaboration?'} %>
       </div>
     <% end %>
