@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
 
   resources :wikis
+  resources :collaborations
   devise_for :users
 
   authenticated :user do
